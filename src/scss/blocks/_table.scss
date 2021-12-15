@@ -1,0 +1,283 @@
+// head
+
+.table__head {
+	@extend %global_flex_block_row_nowrap_flex-start_center;
+
+	margin-bottom: 1.8rem;
+}
+
+.table__head_item {
+	@extend %global_flex_block_row_nowrap_flex-start;
+}
+
+.table_head__sort {
+	margin-right: 1rem;
+}
+
+.table__head_sort_btn {
+	width: 0;
+	height: 0;
+	border-style: solid;
+
+	cursor: pointer;
+	transition: border-color .3s;
+	
+	&.up_mod {
+		margin-bottom: .4rem;
+
+		border-width: 0 .5rem .6rem .5rem;
+		border-color: transparent transparent $gray_2 transparent;
+
+		&:hover, &:focus {
+			border-color: transparent transparent $black transparent;
+		}
+	}
+
+	&.down_mod {
+		border-width: .6rem .5rem 0 .5rem;
+		border-color: $gray_2 transparent transparent transparent ;
+
+		&:hover, &:focus {
+			border-color: $black transparent transparent transparent ;
+		}
+	}
+}
+
+.table__head_title {
+	font-size: 1.4rem;
+	color: $gray_2;
+	text-transform: uppercase;
+}
+
+.table__search_form {
+	@extend %global_flex_block_row_nowrap_flex-start_center;
+}
+
+
+.table__head_search {
+	width: 1.8rem;
+	height: 1.8rem;
+	margin-right: 1rem;
+
+	color: $gray_2;
+}
+
+.table__head_input {
+	font-size: 1.4rem;
+	color: $black;
+	background-color: transparent;
+	font-family: $font_1;
+
+	text-transform: uppercase;
+	border: none;
+
+	&::-webkit-input-placeholder {
+		color: $input_placeholder_color;
+	}
+
+	&::-moz-placeholder {
+		color: $input_placeholder_color;
+	}
+
+	&:-ms-input-placeholder {
+		color: $input_placeholder_color;
+	}
+}
+
+// content
+
+.table {
+	margin-bottom: 1.4rem;
+}
+
+.table__row_wrap {
+	display: block;
+	cursor: pointer;
+}
+
+.table__row {
+	@extend %global_flex_block_row_nowrap_flex-start_center;
+
+	position: relative;
+	
+	width: 100%;
+	// min-height: 9.4rem;
+	margin-bottom: .2rem;
+	padding: 1rem 0;
+	
+	background-color: $white;
+	border-radius: 1rem;
+	overflow: hidden;
+
+	box-shadow: 0 0 .4rem rgba($black, .1);
+
+	transition: box-shadow .3s;
+
+	&:after {
+		content: '';
+
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		height: 100%;
+		width: 1.6rem;
+
+		background-color: $gray;
+	}
+
+	&.active_mod:after {
+		background-color: $green;
+	}
+
+	&:hover, &:focus,
+	.form_checkbox__element:checked + & {
+		box-shadow: 0 0 2rem rgba($black, .2);
+		z-index: 2;
+	}
+}
+
+.table__item {
+	@extend %global_flex_block_row_nowrap_flex-start_center;
+
+	position: relative;
+
+	height: 100%;
+	flex-shrink: 0;
+	padding: 0 2.6rem;
+	min-height: 7.4rem;
+	overflow: hidden;
+
+	&:nth-child(1) {
+		width: 6.6%;
+	}
+
+	&:nth-child(2) {
+		width: 17%;
+	}
+
+	&:nth-child(3) {
+		width: 25.4%;
+	}
+
+	&:nth-child(4) {
+		width: 17%;
+	}
+
+	&:nth-child(5) {
+		width: 17%;
+	}
+
+	&:nth-child(6) {
+		width: 17%;
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: 0;
+
+		width: 1px;
+		height: 5.2rem;
+
+		margin-top: -2.6rem;
+
+		background-color: $gray;
+	}
+
+	.table__head & {
+		min-height: 0;
+	}
+
+	.table__head &,
+	&:last-child {
+		&:after {
+			display: none;
+		}
+	}
+}
+
+.table__item_title {
+	font-size: 2rem;
+	font-weight: 700;
+
+	&.v2_mod {
+		font-size: 1.5rem;
+	}
+}
+
+// filter
+
+.filter {
+	@extend %global_flex_block_row_nowrap_flex-start_center;
+
+	width: 68.2rem;
+	min-height: 8rem;
+	max-width: 100%;
+	margin-left: auto;
+	padding: 2rem 4rem;
+
+	background-color: $blue_5;
+	border-radius: 2.6rem;
+}
+
+.filter__menu {
+	@extend %global_flex_block_row_nowrap_flex-start_center;
+}
+
+.filter__title {
+	font-size: 1.4rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: $blue_2;
+}
+
+.filter__item {
+	position: relative;
+	padding: 0 4rem;
+	border-right: 1px solid $gray;
+	
+	@include bp($point_0, min) {
+		min-width: 13.6rem;
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: 0;
+
+		width: 1px;
+		height: 5.2rem;
+		margin-top: -2.6rem;
+
+		background-color: $gray;
+
+		display: none;
+	}
+
+	&:first-child {
+		padding-left: 0;
+	}
+
+	&:last-child {
+		padding-right: 0;
+		border: none;
+	}
+}
+
+.filter__menu_item {
+	margin-right: 1rem;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.filter__menu_icon {
+	width: 2.8rem;
+	height: 2.8rem;
+
+	color: $blue_4;
+}

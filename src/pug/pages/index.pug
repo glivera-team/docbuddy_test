@@ -3,6 +3,86 @@ extends ../layout/_layout
 block vars
 	- array = {body_class:'test_class', layout_mod:'', sub_keywords:'', title_inner:'Index'}
 block content_block
-	section.section.demo_mod
-		h1.section_title Hola #[a.test(href='https://glivera-team.com/') Maketodor] :)
+	section.section.flex_mod
+		aside.sidebar
+			a.logo(href="#")
+				img.logo__img(src="images/logo.jpg", alt="logo")
+			.main_menu
+				each item, index in mainMenu
+					.main_menu__item
+						a.main_menu__link(href="#" class=`${index == 1 ? 'active_mod' : ''}`)
+							.main_menu__icon
+								+icon(item.icon, 'size_mod')
+							.main_menu__title= item.title
+		.section__content
+			.section__head
+				h2.section__title Patients
+				.section_tabs
+					each item, index in ['Procedures', 'Appointments', 'Documents']
+						.section_tabs__item
+							a.section_tabs_link(href="#" class=`${index == 0 ? 'active_tab' : ''}`)= item 
+				+picture({
+					mod: 'avatar',
+					customClass: 'avatar_img',
+					img: `images/avatar`,
+					alt: 'avatar',
+				})
+					//- img.avatar_img(src="images/avatar.jpg", alt="avatar")
+			.section__content_in
+				.add_button
+					.add_button__icon
+						+icon('plus', 'size_mod')
+				.table
+					.table__head
+						each item in tableHead
+							.table__item
+								if item.checkbox
+									+form_checkbox({
+										label: '',
+										checked: false,
+									})
+								if item.search
+									form.table__search_form
+										.table__head_search
+											+icon('search', 'size_mod')
+										input.table__head_input(placeholder=item.title)
+								if item.sort
+									.table_head__sort
+										.table__head_sort_btn.up_mod
+										.table__head_sort_btn.down_mod
+									.table__head_title= item.title
+					.table__body
+						each row in tableArr
+							- isChecked = row.checked ? {checked: true} : ''
+							label.table__row_wrap
+								input.form_checkbox__element(type="checkbox")&attributes(isChecked)
+								.table__row(class = `${row.active ? 'active_mod' : ''}`)
+									each item in row.content
+										.table__item
+											if item.checkbox
+												.table__checkbox
+												//- +form_checkbox({
+												//- 	label: '',
+												//- 	checked: false,
+												//- })
+											if item.title
+												.table__item_title= item.title
+									.table__item
+										.table__item_title.v2_mod= `${row.active ? 'active' : 'inactive'}`
+
+				.filter
+					.filter__item
+						.filter__title 2 selected
+					.filter__item
+						.filter__menu
+							each item in ['copy', 'print', 'download', 'delete']
+								.filter__menu_item
+									.filter__menu_icon
+										+icon(item, 'size_mod')
+					.filter__item
+						+form_checkbox({
+							label_class: 'toggle_checkbox__label',
+							label: 'Show only selected',
+							checked: false,
+						})
 

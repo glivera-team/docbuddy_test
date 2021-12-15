@@ -1,3 +1,7 @@
+.form_checkbox {
+	margin: 0 auto;
+}
+
 .form_checkbox__block {
 	display: block;
 }
@@ -8,4 +12,19 @@
 
 .form_checkbox__label {
 	@extend %form_el_checkbox;
+}
+
+.toggle_checkbox__label {
+	@extend %form_v2_checkbox;
+}
+
+.table__checkbox {
+	@extend %form_el_checkbox;
+
+	margin: 0 auto;
+
+	.form_checkbox__element:checked + .table__row &:after {
+		opacity: 1;
+		background-color: $blue;
+	}
 }

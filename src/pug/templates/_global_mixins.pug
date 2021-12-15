@@ -168,7 +168,7 @@ mixin picture(data)
 				source(media=`(max-width: ${media - 1}px)` srcset=`${data.img_mob}.${imgType}${is2x ? `, ${data.img_mob}@2x.${imgType} 2x` : ''}` type=`image/${imgType}`)
 			else
 				source(srcset=`${data.img}.${imgType}${is2x ? `, ${data.img}@2x.${imgType} 2x` : ''}` type=`image/${imgType}`)
-		img(class= customClass src=`${data.img}.${type}` alt="")
+		img(class= customClass src=`${data.img}.${type}` alt=data.alt)
 
 mixin image(array)
 	- alt = array.alt || ''

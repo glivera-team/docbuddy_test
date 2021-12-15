@@ -6,18 +6,8 @@
 
 	font-size: 1rem;
 
-	//remove this demo style
-	&.demo_mod {
-		@extend %global_flex_block_row_nowrap_center_center;
-
-		height: calc(100vh - (var(--height-footer) + var(--height-header)));
-
-		font-size: 4rem;
-		color: $white;
-		text-align: center;
-
-		background-color: $black;
-
+	&.flex_mod {
+		@extend %global_flex_block_row_nowrap_flex-start_stretch;
 	}
 }
 
@@ -28,3 +18,101 @@
 	margin: 0 auto;
 }
 
+.section__content {
+	padding: 4rem 2rem 4rem 9rem;
+	flex-grow: 1;	
+	width: calc(100% - 28rem);
+}
+
+.section__content_in {
+	@include bp($point_0, min) {
+		max-width: calc(100% - 8.6rem);
+	}
+}
+
+.section__head {
+	@extend %global_flex_block_row_nowrap_flex-start_center;
+
+	margin-bottom: 3.2rem;
+}
+
+.section__title {
+	margin-right: 9rem;
+	font-size: 4.1rem;
+}
+
+.section_tabs {
+	@extend %global_flex_block_row_wrap_flex-start;
+}
+
+.section_tabs__item {
+	margin-right: 6.8rem;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.section_tabs_link {
+	position: relative;
+	
+	display: block;
+	padding-bottom: 1.2rem;
+
+	font-size:  2.4rem;
+
+	color: $black;
+	transition: color .3s;
+
+	&:after {
+		content: '';
+		position: absolute;
+
+		bottom: 0;
+		left: 0;
+
+		width: 100%;
+		height: 2px;
+
+		opacity: 0;
+		background-color: $blue_5;
+		transition: opacity .3s;
+	}
+
+	&:hover, &:focus {
+		color: $blue_5;
+		text-decoration: none;
+	}
+
+	&.active_tab {
+		color: $blue_5;
+
+		&:after {
+			opacity: 1;
+		}
+	}
+}
+
+.add_button {
+	@extend %global_flex_block_row_nowrap_center_center;
+	width: 5.4rem;
+	height: 5.4rem;
+	margin-bottom: 4rem;
+
+	color: $white;
+
+	background-color: $blue_2;
+	border-radius: 1.8rem 1.8rem 0 1.8rem;
+
+	transition: background-color .3s;
+	cursor: pointer;
+
+	&:hover, &:focus {
+		background-color: $blue;
+	}
+}
+
+.add_button__icon {
+	width: 1.8rem;
+	height: 1.8rem;
+}

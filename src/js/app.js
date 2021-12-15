@@ -31,10 +31,10 @@ $(document).ready(function ($) {
   isMobileData = isMobile();
   $body = $('body');
 
-  if (projectDevStatus) {
-    console.log(process.env.NODE_ENV);
-    pageWidgetInit();
-  }
+  // if (projectDevStatus) {
+  //   console.log(process.env.NODE_ENV);
+  //   pageWidgetInit();
+  // }
 });
 
 $(window).on('load', function () {
