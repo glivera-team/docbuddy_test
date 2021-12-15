@@ -21,13 +21,13 @@ block content_block
 					each item, index in ['Procedures', 'Appointments', 'Documents']
 						.section_tabs__item
 							a.section_tabs_link(href="#" class=`${index == 0 ? 'active_tab' : ''}`)= item 
-				+picture({
-					mod: 'avatar',
-					customClass: 'avatar_img',
-					img: `images/avatar`,
-					alt: 'avatar',
-				})
-					//- img.avatar_img(src="images/avatar.jpg", alt="avatar")
+				a.avatar_btn(href="#") 
+					+picture({
+						mod: 'avatar',
+						customClass: 'avatar_img',
+						img: `images/avatar`,
+						alt: 'avatar',
+					})
 			.section__content_in
 				.add_button
 					.add_button__icon
@@ -77,7 +77,7 @@ block content_block
 						.filter__menu
 							each item in ['copy', 'print', 'download', 'delete']
 								.filter__menu_item
-									.filter__menu_icon
+									a.filter__menu_icon(href="#")
 										+icon(item, 'size_mod')
 					.filter__item
 						+form_checkbox({
